@@ -73,6 +73,9 @@ exports.logger = {
     response: true,
     error: true,
   },
+
+  //错误日志钉钉报警token数组
+  dingtalk: []
 };
 ```
 
@@ -85,6 +88,7 @@ exports.logger = {
 * 格式化 request/response/error 事件信息打印，这两种日志比普通日志多了 ip/method/origin/path/url等信息 和 query/params/body信息(如果有的话)
 * 日志落盘时对内容都做了 扁平化处理 + 序列化处理
 * 渲染页面返回时，提取 html 内容 里面第一个 json 对象 赋值到 response ，方便排查
+* 增加错误日志报警到钉钉群
 
 ## Example
 ### 请求 GET http://127.0.0.1:7001/index/123?key=123

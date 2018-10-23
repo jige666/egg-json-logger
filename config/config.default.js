@@ -12,6 +12,9 @@ exports.logger = {
     error: true,
   },
 
+  //错误日志钉钉报警token
+  dingtalk: [],
+
   //是否扁平化输出
   flattenr: false,
 

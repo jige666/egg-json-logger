@@ -8,7 +8,14 @@ module.exports = app => {
     const LEVEL = Symbol(level)
     app.logger[LEVEL] = app.logger[level];
     app.logger[level] = function (...args) {
-      //格式化参数
+
+      let data = {
+        name: app.name,
+        env: app.env
+      }
+
+      args.push(data)
+
       for (let i = 0, len = args.length; i < len; i++) {
         //错误对象重新封装
         if (args[i] instanceof Error) {
@@ -20,6 +27,8 @@ module.exports = app => {
         //对象序列化
         args[i] = typeof args[i] === 'string' ? args[i] : JSON.stringify(args[i])
       }
+
+      //输出到文件
       app.logger[LEVEL](...args)
     };
   });
@@ -29,9 +38,9 @@ module.exports = app => {
   //借助 module 缓存特性 传递日志类型, 在最终格式化输出日志时使用
   util.flattenr = !!config.flattenr
   util.stringify = !!config.stringify
+  util.dingtalk = config.dingtalk
 
   if (config.event.error) {
-
     app.on('error', (err, ctx) => {
       let meta = ctx && ctx.meta || {}
 

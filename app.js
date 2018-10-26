@@ -44,17 +44,19 @@ module.exports = app => {
     app.on('error', (err, ctx) => {
       let meta = ctx && ctx.meta || {}
 
-      Object.assign({}, meta, {
-        origin: ctx.origin,
-        ip: ctx.ip,
-        host: ctx.host,
-        method: ctx.method,
-        path: ctx.path,
-        url: ctx.url,
-        body: ctx.request.body,
-        query: ctx.query,
-        params: ctx.params
-      })
+      if (ctx) {
+        Object.assign({}, meta, {
+          origin: ctx.origin,
+          ip: ctx.ip,
+          host: ctx.host,
+          method: ctx.method,
+          path: ctx.path,
+          url: ctx.url,
+          body: ctx.request.body,
+          query: ctx.query,
+          params: ctx.params
+        })
+      }
 
       app.logger.error('[error]', meta, err)
     });

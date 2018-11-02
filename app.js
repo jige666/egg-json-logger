@@ -11,7 +11,7 @@ module.exports = app => {
 
       let data = {
         name: app.name,
-        env: app.env
+        env: app.config.env
       }
 
       args.push(data)
@@ -52,7 +52,7 @@ module.exports = app => {
           method: ctx.method,
           path: ctx.path,
           url: ctx.url,
-          body: ctx.request.body,
+          body: ctx.request.body || ctx.request.rawBody,
           query: ctx.query,
           params: ctx.params
         })
@@ -96,7 +96,7 @@ module.exports = app => {
         method: ctx.method,
         path: ctx.path,
         url: ctx.url,
-        body: ctx.request.body,
+        body: ctx.request.body || ctx.request.rawBody,
         query: ctx.query,
         params: ctx.params
       }, ctx.meta)

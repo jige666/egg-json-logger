@@ -1,6 +1,7 @@
 'use strict';
 
 const util = require('./lib/util')
+const stringify = require('json-stringify-safe')
 
 module.exports = app => {
 
@@ -25,7 +26,7 @@ module.exports = app => {
         }
 
         //对象序列化
-        args[i] = typeof args[i] === 'string' ? args[i] : JSON.stringify(args[i])
+        args[i] = typeof args[i] === 'string' ? args[i] : stringify(args[i])
       }
 
       //输出到文件
@@ -66,7 +67,7 @@ module.exports = app => {
 
     app.on('request', ctx => {
 
-      if (util.checkIgnorePath(config.ingore, ctx.path)) return
+      if (util.checkIgnorePath(config.ignore, ctx.path)) return
 
       let meta = Object.assign({
         origin: ctx.origin,
@@ -87,7 +88,7 @@ module.exports = app => {
 
     app.on('response', ctx => {
 
-      if (util.checkIgnorePath(config.ingore, ctx.path)) return;
+      if (util.checkIgnorePath(config.ignore, ctx.path)) return;
 
       let meta = Object.assign({
         origin: ctx.origin,
@@ -106,7 +107,7 @@ module.exports = app => {
       switch (typeof meta.response) {
         case 'string':
           if (meta.response.indexOf('DOCTYPE') !== -1) {
-            meta.response = util.getHtmlJson(meta.response)
+            meta.response = 'html'
           }
           break;
         case 'buffer':

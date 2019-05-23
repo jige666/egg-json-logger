@@ -1,10 +1,10 @@
 'use strict';
 
-const {formatter} = require('../lib/util')
+const { formatter } = require('../lib/util')
 
 exports.logger = {
 
-  ingore: ['/', /.+\.{html|css|js}/],
+  ignore: ['/', /.+\.{html|css|js}/],
 
   event: {
     request: true,
@@ -23,4 +23,3 @@ exports.logger = {
 
   formatter: formatter
 };
-

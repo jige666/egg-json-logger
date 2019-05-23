@@ -3,6 +3,7 @@
 const util = require('../../lib/util')
 const uuid = require('uuid/v4')
 const REQID = Symbol('reqid')
+
 module.exports = {
 
   get meta() {
@@ -30,10 +31,11 @@ module.exports = {
 
         //捕捉报错的具体位置
         if (level === 'error') {
-          data.file = util.getFileLine(this.app.name, 5)
+          data.stack = util.getStack(this.app.name)
         }
 
         args.push(data)
+
         this.app.logger[level](...args)
       }
     });

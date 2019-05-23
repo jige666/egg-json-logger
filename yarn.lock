@@ -1748,7 +1748,7 @@ circular-json@^0.3.1:
   resolved "https://registry.npm.taobao.org/circular-json/download/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
   integrity sha1-gVyZ6oT2gJUp0vRXkb34JxE1LWY=
 
-circular-json@^0.5.4, circular-json@^0.5.9:
+circular-json@^0.5.4:
   version "0.5.9"
   resolved "https://registry.npm.taobao.org/circular-json/download/circular-json-0.5.9.tgz#932763ae88f4f7dead7a0d09c8a51a4743a53b1d"
   integrity sha1-kydjroj0996teg0JyKUaR0OlOx0=

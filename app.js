@@ -104,16 +104,13 @@ module.exports = app => {
 
       meta.response = ctx.body
 
-      switch (typeof meta.response) {
-        case 'string':
-          if (meta.response.indexOf('DOCTYPE') !== -1) {
-            meta.response = 'html'
-          }
-          break;
-        case 'buffer':
-          meta.response = ctx.path
-          break
-        default:
+      if (typeof meta.response === 'string'){
+        if (meta.response.indexOf('DOCTYPE') !== -1) {
+          meta.response = '[Html]'
+        }
+      }
+      else if(Buffer.isBuffer(meta.response)){
+        meta.response = '[Buffer]'
       }
 
       //接口非正确返回要单独标志

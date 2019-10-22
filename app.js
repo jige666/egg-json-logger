@@ -40,6 +40,7 @@ module.exports = app => {
   util.flattenr = !!config.flattenr
   util.stringify = !!config.stringify
   util.dingtalk = config.dingtalk
+  util.wechatWork = config.wechatWork
 
   if (config.event.error) {
     app.on('error', (err, ctx) => {

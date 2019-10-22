@@ -75,7 +75,10 @@ exports.logger = {
   },
 
   //错误日志钉钉报警token数组
-  dingtalk: []
+  dingtalk: [],
+
+  // 错误日志企业微信报警 key 数组
+  wechatWork: [],
 };
 ```
 

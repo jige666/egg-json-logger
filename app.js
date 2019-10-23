@@ -41,6 +41,7 @@ module.exports = app => {
   util.stringify = !!config.stringify
   util.dingtalk = config.dingtalk
   util.wechatWork = config.wechatWork
+  util.baseDir = config.baseDir
 
   if (config.event.error) {
     app.on('error', (err, ctx) => {

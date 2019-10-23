@@ -24,5 +24,8 @@ exports.logger = {
   //是否序列化输出
   stringify: true,
 
-  formatter: formatter
+  //是否扁平化函数
+  formatter: formatter,
+
+  baseDir: ''
 };

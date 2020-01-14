@@ -77,6 +77,9 @@ exports.logger = {
   //错误日志钉钉报警token数组
   dingtalk: [],
 
+   // 错误日志倍洽报警路径
+  bearychat: [],
+
   // 错误日志企业微信报警 key 数组
   wechatWork: [],
 };
